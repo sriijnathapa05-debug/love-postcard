@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Beloved 💌</title>
 
 <style>
 body{
   margin:0;
   font-family:'Segoe UI', cursive;
-  overflow:hidden;
   background:linear-gradient(135deg,#ffc1cc,#ffd6e0,#ffeaf4);
   text-align:center;
+  overflow:hidden;
 }
 
 /* Screens */
@@ -22,13 +23,14 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  transition:0.6s;
 }
 
-.hidden{display:none;}
+.hidden{
+  display:none;
+}
 
 h1{
-  color:white;
+  color:#ff2e63;
   font-size:38px;
 }
 
@@ -82,7 +84,7 @@ button{
   75%{transform:rotate(-5deg);}
 }
 
-/* Note */
+/* Notes */
 .note-container{
   display:flex;
   flex-wrap:wrap;
@@ -116,7 +118,6 @@ button{
 .heart{
   position:fixed;
   color:#ff4b7d;
-  font-size:20px;
   animation:float 5s linear infinite;
 }
 
@@ -152,18 +153,19 @@ button{
 <!-- SCREEN 4 -->
 <div id="screen4" class="screen hidden">
   <div class="teddy">🧸</div>
-  <h1>Yayyyy!! i knew it 🥹💞</h1>
+  <h1>Yayyyy!! I knew it 🥹💞</h1>
   <button class="primary" onclick="nextScreen(5)">There's something for you...</button>
 </div>
 
 <!-- SCREEN 5 -->
 <div id="screen5" class="screen hidden" style="overflow:auto;">
   <h1 style="margin-top:40px;">💌 For You</h1>
+
   <div class="note-container">
 
     <div class="note-box">
       💌 bubuuuu 💞  
-      You are the most hardworking man I've ever seen n the one i love the mostttt but after my papaa.
+      You are the most hardworking man I've ever seen n the one I love the mostttt but after my papaa.
     </div>
 
     <div class="note-box">
@@ -172,17 +174,17 @@ button{
     </div>
 
     <div class="note-box">
-      i genuinely love you the most aap mnoo ni mnooo but seriously you have become that person in my life whom i never want to lose at any cost.. 
-      aapki feelings maybe change hojaye prr meri nhi hoyegii no matter what happens....
+      I genuinely love you the most. Aap mano ya na mano,
+      you have become that person in my life whom I never want to lose.
     </div>
 
     <div class="note-box">
       I’ve never celebrated Valentine’s Day before,
-      but with you, it feels different. Pata nahi kyun asa hota haii jesi apko psnd hu bs vesi bnjaau,I feel like becoming a better version of myself for you..
+      but with you it feels different. I want to become a better version of myself for you.
     </div>
 
     <div class="note-box">
-      I’ll pray n wish jldi jldi aap successful hojau. ❤️
+      I’ll pray and wish that you become successful very soon. ❤️
     </div>
 
   </div>
@@ -195,31 +197,41 @@ function openGift(){
 }
 
 function nextScreen(num){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.add("hidden"));
+  document.querySelectorAll(".screen").forEach(function(s){
+    s.classList.add("hidden");
+  });
+
   document.getElementById("screen"+num).classList.remove("hidden");
-  if(num===5) createHearts();
+
+  if(num===5){
+    createHearts();
+  }
 }
 
 function moveNo(){
-  var x=Math.random()*window.innerWidth;
-  var y=Math.random()*window.innerHeight;
-  document.getElementById("noBtn").style.left=x+"px";
-  document.getElementById("noBtn").style.top=y+"px";
+  var btn=document.getElementById("noBtn");
+  var x=Math.random()*(window.innerWidth-100);
+  var y=Math.random()*(window.innerHeight-50);
+  btn.style.left=x+"px";
+  btn.style.top=y+"px";
 }
 
 function createHearts(){
-  setInterval(()=>{
+  setInterval(function(){
     var heart=document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML="💖";
     heart.style.left=Math.random()*100+"vw";
     heart.style.fontSize=(Math.random()*20+10)+"px";
     document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),5000);
+
+    setTimeout(function(){
+      heart.remove();
+    },5000);
+
   },300);
 }
 </script>
 
 </body>
 </html>
-
